@@ -1,0 +1,608 @@
+@charset "UTF-8";
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Didact Gothic", sans-serif;
+  color: rgb(24, 72, 174);
+  text-align: center;
+  font-size: 16px;
+  background-color: rgb(247, 234, 218);
+  padding-top: 102px;
+}
+body h1, body h2, body h3 {
+  font-weight: 800 !important;
+  text-transform: uppercase;
+}
+body h2 {
+  font-size: 50px;
+}
+body p {
+  font-weight: 100;
+  color: rgb(12, 12, 12);
+}
+body img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+body .btn a {
+  text-decoration: none;
+  font-size: 16px;
+}
+body .my-button {
+  background: transparent;
+  border: 1px solid rgb(189, 157, 48);
+  border-radius: 45px;
+  transition: 0.5s;
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
+  padding: 15px 30px;
+  line-height: 140%;
+}
+body .my-button a {
+  color: rgb(12, 12, 12);
+  font-size: 23px;
+}
+body .my-button:hover {
+  background-color: rgb(189, 157, 48);
+}
+body .product-card {
+  text-align: center;
+  margin-bottom: 24px;
+  background-color: transparent;
+  border: none;
+}
+body .product-card .card-img {
+  position: relative;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 45px;
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+body .product-card .card-img img {
+  object-fit: cover;
+}
+body .product-card .card-img:hover {
+  filter: brightness(50%);
+}
+body .product-card .card-title {
+  font-size: 32px;
+  padding-bottom: 8px;
+}
+body .product-card .card-button {
+  border-radius: 45px;
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: 0.5s;
+}
+body .product-card .card-button .add-to-cart {
+  margin: 0;
+  line-height: 140%;
+  width: 72%;
+  background-color: white;
+  color: rgb(12, 12, 12);
+  font-size: 21px;
+  padding: 15px 15px;
+  border-radius: 45px 0 0 45px;
+  transition: 0.5s;
+}
+body .product-card .card-button .add-to-cart:hover {
+  background-color: rgb(189, 157, 48);
+  color: white;
+}
+body .product-card .card-button .price {
+  margin: 0;
+  line-height: 120%;
+  width: 28%;
+  background-color: rgb(189, 157, 48);
+  color: white;
+  font-size: 21px;
+  padding: 14px 0;
+  border-radius: 0 45px 45px 0;
+}
+body .product-card .card-button:hover {
+  background-color: rgb(189, 157, 48);
+}
+
+/*Estilos del Header*/
+header {
+  /*Estilos del Nav*/
+  background-color: rgb(247, 234, 218) !important;
+  padding-top: 25px;
+}
+header a {
+  font-weight: 800;
+  font-size: 23px;
+}
+header .top-bar {
+  height: 60px;
+  text-align: center;
+}
+header .top-bar .navbar-brand {
+  display: flex;
+  justify-content: center;
+}
+header .top-bar .header-buttons {
+  background-color: rgb(247, 234, 218);
+  border: none;
+  height: 48px;
+  width: 48px;
+  padding: 0;
+  transition: 0.5s;
+}
+header .top-bar .header-buttons svg {
+  height: 38px;
+  width: 38px;
+  vertical-align: middle;
+}
+header .top-bar .header-buttons .bi-list, header .top-bar .header-buttons .bi-search, header .top-bar .header-buttons .bi-cart, header .top-bar .header-buttons .bi-bag-heart {
+  color: rgb(24, 72, 174);
+}
+header .top-bar .header-buttons:hover {
+  background-color: rgb(189, 157, 48);
+}
+header .top-bar .important-links {
+  display: flex;
+  justify-content: center;
+}
+header .top-bar .important-links .important-unordered-list {
+  padding: 0;
+  list-style: none;
+  margin-bottom: 0;
+  width: auto;
+}
+header .top-bar .important-links .important-unordered-list .important-list-item {
+  margin: 0px 8px 0px 8px;
+}
+header .navbar-brand, header .nav-link {
+  color: rgb(24, 72, 174) !important;
+  transition: 0.5s;
+}
+header .navbar-brand:hover, header .nav-link:hover {
+  color: rgb(189, 157, 48) !important;
+}
+header .nav-item .activo {
+  color: rgb(189, 157, 48) !important;
+}
+header .nav-item .activo:hover {
+  color: rgb(24, 72, 174) !important;
+}
+
+/*Estilos del Hero*/
+hero .hero-banner {
+  background-image: url(../assets/img/bg-ganesha.png);
+  background-position: 0px -100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1080px;
+}
+hero .hero-content {
+  padding-top: 80px;
+  text-align: left;
+}
+hero .hero-content .hero-title {
+  font-size: 80px;
+}
+hero .hero-content .hero-subtitle {
+  font-size: 40px;
+  margin-bottom: 32px;
+}
+
+main {
+  /*Estilos de About*/
+  /*Estilos de Destacados */
+  /*Estilos globales para los elementos "product-card"*/
+  /*Estilos globales para los botones"*/
+  /*Estilos de la sección "Bandas Destacadas"*/
+  /*Estilos de la sección "Noticias" del inicio*/
+  /* Estilos de la sección Spotify */
+  /*Estilos de la sección biografía de la banda*/
+  /*Estilos de la sección discografia de la banda*/
+  /*Estilos de Noticias*/
+  /*Estilos de Galeria*/
+  /*Estilos de Contacto*/
+}
+main .about .about-content {
+  margin: 20px 0;
+}
+main .about .about-content .since {
+  background: transparent;
+  border: 1px solid rgb(189, 157, 48);
+  border-radius: 119px;
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
+  height: 119px;
+  width: 119px;
+  padding: 15px 30px;
+  margin: 0 auto;
+}
+main .about .about-content .details {
+  text-align: left;
+}
+main .about .about-content .details .details-title {
+  font-size: 40px;
+}
+main .about .img-about {
+  margin-right: -300px;
+  padding: 50px;
+}
+main .about .img-about img {
+  border-radius: 45px;
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
+}
+main .destacados {
+  padding: 100px 0;
+}
+main .categorias .categoria-img {
+  position: relative;
+  text-align: center;
+  border-radius: 45px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+main .categorias .categoria-img .cat-img-prim {
+  border-radius: 0 45px 45px 0;
+}
+main .categorias .categoria-img .cat-img-seg {
+  border-radius: 45px;
+}
+main .categorias .categoria-img .cat-img-terc {
+  border-radius: 45px 0 0 45px;
+}
+main .categorias .categoria-img a {
+  position: absolute;
+  text-decoration: none;
+}
+main .categorias .categoria-btn {
+  background-color: white;
+  color: rgb(12, 12, 12);
+}
+main .novedades {
+  padding: 100px 0;
+}
+main .btn-info {
+  background-color: rgb(3, 201, 201);
+  transition: 0.5s;
+}
+main .btn-info:hover {
+  filter: brightness(50%);
+}
+main .btn-info a {
+  color: black;
+  text-decoration: none;
+}
+main .btn-secondary {
+  background-color: rgb(19, 19, 19);
+}
+main .btn-secondary:hover {
+  background-color: rgb(3, 201, 201);
+}
+main .botones-paginacion .page-item .page-link {
+  border-color: rgb(19, 19, 19);
+  color: white;
+  background-color: black;
+  transition: 0.5s;
+}
+main .botones-paginacion .page-item .page-link:hover {
+  background-color: rgb(19, 19, 19);
+}
+main .botones-paginacion .page-item .activo {
+  background-color: rgb(3, 201, 201);
+}
+main .card-banda .card-img-top {
+  height: 300px !important;
+  transition: 0.5s;
+}
+main .card-banda .card-img-top:hover {
+  filter: brightness(50%);
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  main .card-banda {
+    margin: auto auto;
+    width: 70%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  main .card-banda {
+    margin: auto auto;
+  }
+  main .card-banda h3 {
+    font-size: 90%;
+  }
+  main .card-banda .card-img-top {
+    height: 200px !important;
+  }
+}
+main .card-noti-inicio .card-img {
+  height: 220px;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  main .card-noti-inicio .card-img {
+    margin: auto auto;
+    height: 300px !important;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  main .card-noti-inicio .card-img {
+    margin: auto auto;
+    height: 250px !important;
+  }
+}
+main .card-noti-inicio .card-img-overlay {
+  text-shadow: 2px 2px 1px black;
+  text-align: left;
+  transition: 0.5s;
+}
+main .card-noti-inicio .card-img-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+main .card-noti-inicio .card-img-overlay h3 {
+  position: absolute;
+  top: 75%;
+}
+main .card-noti-inicio .card-img-overlay p {
+  position: absolute;
+  top: 85%;
+}
+@media (max-width: 575.98px) {
+  main .card-noti-inicio .card-img-overlay h3 {
+    font-size: 90%;
+  }
+  main .card-noti-inicio .card-img-overlay p {
+    font-size: 90%;
+    top: 90%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  main .card-noti-inicio .card-img-overlay h3 {
+    font-size: 85%;
+  }
+  main .card-noti-inicio .card-img-overlay p {
+    font-size: 85%;
+    top: 90%;
+  }
+}
+@media (min-width: 1200px) {
+  main .card-noti-inicio .card-img-overlay h3, main .card-noti-inicio .card-img-overlay p {
+    font-size: 85%;
+  }
+}
+main .fondo-parallax {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/img/parallax-background.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .fondo-parallax .zona-spotify {
+  padding: 100px 0 100px 0;
+}
+main .fondo-parallax .btn-spotify {
+  background-color: rgb(30, 215, 96);
+  border: 0;
+  transition: 0.5s;
+}
+main .fondo-parallax .btn-spotify:hover {
+  filter: brightness(80%);
+}
+main .biografia {
+  text-align: center;
+}
+main .biografia .img-perfil-banda {
+  border-radius: 50% !important;
+  width: auto;
+  height: 350px;
+}
+@media (max-width: 991.98px) {
+  main .biografia .img-perfil-banda {
+    width: 350px;
+    height: 350px;
+  }
+}
+main .discografia .card-disco a {
+  color: rgb(3, 201, 201);
+  text-decoration: none;
+}
+main .discografia .card-disco .card-img-top {
+  height: 250px !important;
+}
+@media (max-width: 768px) {
+  main .discografia .card-disco {
+    width: 80%;
+    margin: auto auto;
+  }
+  main .discografia .card-disco .card-img-top {
+    height: 350px !important;
+  }
+}
+main .noticias-principales .card-img {
+  height: 300px;
+}
+main .noticias-principales h3 {
+  color: rgb(3, 201, 201);
+}
+main .noticias-principales p {
+  color: white;
+}
+main .noticias-principales .articulo-noticia {
+  text-decoration: none;
+}
+main .noticias-principales .articulo-noticia:hover .card-img {
+  transition: 0.5s;
+  border: 1px solid rgb(3, 201, 201);
+  filter: brightness(60%);
+}
+main .noticias-principales .articulo-noticia:hover h3 {
+  filter: brightness(300%);
+}
+main .noticias-secundarias .card-img {
+  height: 200px;
+}
+main .noticias-secundarias h3 {
+  color: rgb(3, 201, 201);
+}
+main .noticias-secundarias p {
+  color: white;
+}
+@media (min-width: 992px) {
+  main .noticias-secundarias .card-img {
+    height: 180px;
+  }
+  main .noticias-secundarias h3 {
+    font-size: 80%;
+  }
+  main .noticias-secundarias p {
+    font-size: 80%;
+  }
+}
+main .noticias-secundarias .articulo-noticia {
+  text-decoration: none;
+}
+main .noticias-secundarias .articulo-noticia:hover .card-img {
+  transition: 0.5s;
+  border: 1px solid rgb(3, 201, 201);
+  filter: brightness(60%);
+}
+main .noticias-secundarias .articulo-noticia:hover h3 {
+  filter: brightness(300%);
+}
+main .galeria-imagenes .card-img {
+  margin-bottom: 16px;
+}
+main .galeria-imagenes .card-img:hover {
+  transition: 0.5s;
+  border: 1px solid rgb(3, 201, 201);
+  filter: brightness(60%);
+}
+@media (max-width: 992px) {
+  main .galeria-imagenes .card-img {
+    height: auto;
+  }
+}
+main .galeria-imagenes .galeria-primera-fila .card-img {
+  height: 250px;
+}
+main .galeria-imagenes .galeria-segunda-fila .card-img {
+  height: 500px;
+}
+main .galeria-imagenes .galeria-tercera-fila .card-img {
+  height: 300px;
+}
+main .contacto .img-logo-contacto {
+  width: auto;
+  height: 350px;
+}
+@media (max-width: 991.98px) {
+  main .contacto .img-logo-contacto {
+    width: 350px;
+    height: 350px;
+  }
+}
+main .contacto .form-contacto {
+  text-align: start;
+}
+main .contacto .form-contacto .form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgb(3, 201, 201);
+}
+main .contacto .form-contacto label {
+  margin: 8px 0 8px 0;
+}
+main .contacto .form-contacto textarea {
+  resize: none;
+}
+
+/*Estilos del Footer*/
+.footer .footer-menu {
+  background-color: rgb(19, 19, 19);
+}
+.footer .footer-menu h3 {
+  text-transform: uppercase;
+}
+.footer .footer-menu p a, .footer .footer-menu .social-media-icon {
+  color: white;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.footer .footer-menu p a:hover, .footer .footer-menu .social-media-icon:hover {
+  color: rgb(3, 201, 201);
+}
+.footer .footer-legal {
+  background-color: rgb(12, 12, 12);
+  color: rgba(255, 255, 255, 0.377);
+}
+.footer .footer-legal a {
+  color: rgb(3, 201, 201);
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 152px;
+  }
+  .about-content {
+    margin: 112px 0 !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  body h2 {
+    font-size: 42px !important;
+  }
+  .hero-banner {
+    height: 810px !important;
+    background-position: -250px -100px !important;
+  }
+  .hero-title {
+    font-size: 60px !important;
+  }
+  .hero-subtitle {
+    font-size: 30px !important;
+  }
+}
+@media (max-width: 575px) {
+  body h2 {
+    font-size: 32px !important;
+  }
+  .navbar-brand {
+    font-size: 130%;
+  }
+  .header-buttons {
+    height: 33.6px !important;
+    width: 33.6px !important;
+  }
+  .header-buttons svg {
+    height: 26.6px !important;
+    width: 26.6px !important;
+  }
+  .important-list-item {
+    margin: 0px 4px 0px 4px !important;
+  }
+  .hero-banner {
+    height: 600px !important;
+    background-position: -300px 0px !important;
+  }
+  .hero-title {
+    font-size: 40px !important;
+  }
+  .hero-subtitle {
+    font-size: 23px !important;
+  }
+  .about {
+    padding-top: 40px;
+  }
+  .about .since {
+    position: absolute;
+    left: unset;
+    right: 20px;
+  }
+  .about .details {
+    padding-top: 80px;
+  }
+  .about .img-about {
+    padding: 24px !important;
+  }
+}
+
+/*# sourceMappingURL=estilos.css.map */
