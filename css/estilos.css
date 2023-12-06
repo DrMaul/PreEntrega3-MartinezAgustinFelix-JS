@@ -270,6 +270,9 @@ main .categorias .categoria-btn {
   background-color: white;
   color: rgb(12, 12, 12);
 }
+main .categorias .categoria-btn:hover {
+  background-color: rgb(189, 157, 48);
+}
 main .novedades {
   padding: 100px 0;
 }
@@ -303,6 +306,10 @@ main .novedades {
   body {
     padding-top: 152px;
   }
+  body .card-img img {
+    width: 306px;
+    height: 368px;
+  }
   .about-content {
     margin: 112px 0 !important;
   }
@@ -310,6 +317,9 @@ main .novedades {
 @media (min-width: 768px) and (max-width: 991px) {
   body h2 {
     font-size: 42px !important;
+  }
+  body .card-img img {
+    height: 466px;
   }
   .hero-banner {
     height: 810px !important;
@@ -325,6 +335,9 @@ main .novedades {
 @media (max-width: 575px) {
   body h2 {
     font-size: 32px !important;
+  }
+  body .card-img img {
+    height: 716px;
   }
   .navbar-brand {
     font-size: 130%;

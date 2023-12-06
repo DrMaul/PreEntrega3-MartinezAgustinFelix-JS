@@ -1,16 +1,27 @@
-let carrito = [];
+const carrito = [];
 
+// Verificar si hay elementos en localStorage al inicio
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener los elementos guardados en localStorage
+    const carritoStorage = JSON.parse(localStorage.getItem('carrito')) || [];
+  
+    // Cargar los elementos en el array Carrito
+    carrito.push(...carritoStorage);
+  
+    actualizarContadorCarrito();
+
+    });
 
 
 const productos = [
-    {id: 1, nombre: "Pulsera Ojo Turco Clásica", precio: 500, img: "https://picsum.photos/306/368/?random=1"},
-    {id: 2, nombre: "Pulsera Ojo Turco Riqueza", precio: 500, img: "https://picsum.photos/306/368/?random=2"},
-    {id: 3, nombre: "Atrapasueños", precio: 500, img: "https://picsum.photos/306/368/?random=3"},
-    {id: 4, nombre: "Estatua de Buda", precio: 800, img: "https://picsum.photos/306/368/?random=4"},
-    {id: 5, nombre: "Pack 8 Sahumerios", precio: 500, img: "https://picsum.photos/306/368/?random=5"},
-    {id: 6, nombre: "Cascada de humo", precio: 1500, img: "https://picsum.photos/306/368/?random=6"},
-    {id: 7, nombre: "Collar personalizado", precio: 300, img: "https://picsum.photos/306/368/?random=7"},
-    {id: 8, nombre: "Pulsera 7 Nudos", precio: 500, img: "https://picsum.photos/306/368/?random=8"},
+    {id: 1, nombre: "Pulsera Ojo Turco Clásica", precio: 500, img: "./assets/img/productos/pulsera_ojoturco.png"},
+    {id: 2, nombre: "Pulsera Ojo Turco Riqueza", precio: 500, img: "./assets/img/productos/pulsera_riqueza.png"},
+    {id: 3, nombre: "Atrapasueños", precio: 500, img: "./assets/img/productos/atrapasueños.png"},
+    {id: 4, nombre: "Estatua de Buda", precio: 800, img: "./assets/img/productos/buda_amor.png"},
+    {id: 5, nombre: "Pack 8 Sahumerios", precio: 500, img: "./assets/img/productos/sahumerios.png"},
+    {id: 6, nombre: "Cascada de humo", precio: 1500, img: "./assets/img/productos/cascadahumo.png"},
+    {id: 7, nombre: "Collar personalizado", precio: 300, img: "./assets/img/productos/collares.png"},
+    {id: 8, nombre: "Pulsera 7 Nudos", precio: 500, img: "./assets/img/productos/pulsera_7nudos.png"},
 ]
 
 function mostrarProductos(productosFiltrados) {
@@ -24,7 +35,7 @@ function mostrarProductos(productosFiltrados) {
         divProducto.setAttribute("data-aos", "zoom-in");
         divProducto.innerHTML = `
             <div class="card product-card">
-                <div class="card-img">
+                <div class="card-img" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">
                     <img src="${producto.img}" alt="Imagen de ${producto.nombre}">
                 </div>
                 <div class="card-body">
@@ -38,6 +49,9 @@ function mostrarProductos(productosFiltrados) {
         `;
         contenedor.appendChild(divProducto);
     });
+
+    
+
   }
 
 function agregarAlCarrito(nombre, precio) {
@@ -54,6 +68,8 @@ function agregarAlCarrito(nombre, precio) {
   // Mostrar la alerta de notificación
   mostrarAlertaNotificacion();
 
+  guardarCarritoLocalStorage();
+
   //mostrarModal();
 
 }  
@@ -61,23 +77,39 @@ function agregarAlCarrito(nombre, precio) {
 function actualizarListaCarrito() {
     const listaCarrito = document.getElementById('listaCarrito');
     listaCarrito.innerHTML = ''; // Limpiar la lista actual
+
+    const totalCarrito = document.getElementById('totalCarrito');
+
+    if (carrito.length === 0) {
+        const item = document.createElement('li');
+        item.classList.add('list-group-item');
+        item.innerHTML = `
+            <h5 class="d-flex justify-content-center">Aún no hay productos en carrito</h5>
+        `
+        listaCarrito.appendChild(item);
+    }
   
-    // Agregar cada producto del carrito a la lista
+    // Agregar cada producto del carrito a la lista del modal
     carrito.map((producto, index) => {
       const item = document.createElement('li');
       item.classList.add('list-group-item');
       item.innerHTML = `
-        <h5>${producto.nombre}</h5>
-        <p class="float-start align-middle">Precio: $${producto.precio}</p>
-        <span class="float-end" style="cursor: pointer;" onclick="eliminarDelCarrito(${index})">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-        </svg>
+        <h5 class="d-flex justify-content-start">${producto.nombre}</h5>
+        <p class="float-start mt-2">Precio: $${producto.precio}</p>
+        <span class="float-end align-self-center my-button bg-danger text-white" style="cursor: pointer;" onclick="eliminarDelCarrito(${index})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg>
         </span>
       `;
       listaCarrito.appendChild(item);
     });
+
+    const totalGastado = carrito.reduce((total, producto) => total + producto.precio, 0);
+    totalCarrito.innerHTML = `
+        <h5 class="d-flex justify-content-start">Total en carrito: $${totalGastado}</h5>
+    `
 
 
   }
@@ -86,6 +118,7 @@ function actualizarListaCarrito() {
     carrito.splice(index, 1); // Eliminar el elemento del array
     actualizarListaCarrito(); // Actualizar la lista en el modal
     actualizarContadorCarrito(); // Actualizar el contador carrito
+    guardarCarritoLocalStorage()
     //localStorage.clear();
   }
 
@@ -106,6 +139,9 @@ function actualizarListaCarrito() {
   function mostrarModal() {
     const modalElement = document.getElementById('carritoModal');
     const modal = new bootstrap.Modal(modalElement);
+
+    actualizarListaCarrito();
+
     modal.show();
   }
 
@@ -133,6 +169,11 @@ function actualizarListaCarrito() {
           alertaNotificacion.classList.remove('fade');
         }, 500); // Duración de la animación de salida
       }, 3000); // Ocultar después de 3 segundos
+  }
+
+  function guardarCarritoLocalStorage(){
+    //mandar al local
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
 

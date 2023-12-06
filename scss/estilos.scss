@@ -21,7 +21,11 @@ $sombra-color:rgba(0, 0, 0, 0.2) ;
 
 html, body {
     overflow-x: hidden;
+
+    
 }
+
+
 
 
 body {
@@ -183,7 +187,6 @@ body {
       .custom-modal.fade {
         opacity: 0; /* Cuando tiene la clase 'fade', la alerta se hace invisible */
       }  
-
 
 }
 
@@ -405,6 +408,10 @@ main {
         .categoria-btn {
             background-color: $color-white;
             color:$color-gris-dark;
+
+            &:hover {
+                background-color: $color-gold;
+            }
         }   
 
     }
@@ -458,6 +465,13 @@ main {
 @media (min-width: 992px) {
     body {
         padding-top: 152px;
+
+        .card-img {
+            img {
+                width: 306px;  
+                height: 368px; 
+            }
+        }
         
     }
 
@@ -473,6 +487,12 @@ main {
     body {
         h2 {
             font-size: 42px !important;
+        }
+
+        .card-img {
+            img { 
+                height: 466px; 
+            }
         }
     }
 
@@ -502,6 +522,12 @@ main {
     body {
         h2 {
             font-size: 32px !important;
+        }
+
+        .card-img {
+            img { 
+                height: 716px; 
+            }
         }
     }
 
