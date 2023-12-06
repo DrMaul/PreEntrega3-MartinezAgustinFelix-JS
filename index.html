@@ -8,16 +8,44 @@
     <title>Ojitos Turcos</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=League+Gothic&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/img/icono.ico" />
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+
 
   </head>
   <body>
+
+    <!-- Modal Carrito de compras -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="listaCarrito" class="list-group">
+              <!-- Los productos agregados al carrito aparecerán aquí -->
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Finalizar Compra</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerta de notificación -->
+    <div id="alertaNotificacion" class="alert alert-success alert-dismissible custom-modal" role="alert" style="display: none;">
+      ¡El producto ha sido agregado al carrito!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
     <!-- Menú de Navegación -->
     <header class="fixed-top">
@@ -55,10 +83,11 @@
                   </button>
                 </li>
                 <li class="important-list-item">
-                  <button class="btn btn-secondary header-buttons" type="submit">
+                  <button class="btn btn-secondary header-buttons position-relative" type="submit" onclick="mostrarModal()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                       <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                     </svg>
+                    <span id="btnContadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                   </button>
                 </li>
                 <li class="important-list-item">
@@ -239,205 +268,15 @@
       <section class="novedades">
         <div class="container">
           <div class="titulo-destacados my-4">
-            <h2>Novedades</h2>
+            <h2>Productos</h2>
           </div>
-          <section class="row mb-5">
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-                <div class="card product-card">
-                    <div class="card-img">
-                        <img src="https://picsum.photos/306/368/?random=1" alt="Primera banda destacada">
-                    </div>
-                    <div class="card-body">
-                      <h3 class="card-title">Producto 1</h3>
-                    <a href="" class="card-button d-flex">
-                      <p class="add-to-cart">Agregar al carrito</p>
-                      <p class="price">$300</p>
-                    </a>
-                    </div>
-                    
-                    
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-              <div class="card product-card">
-                  <div class="card-img">
-                      <img src="https://picsum.photos/306/368/?random=2" alt="Primera banda destacada">
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">Producto 1</h3>
-                  <a href="" class="card-button d-flex">
-                    <p class="add-to-cart">Agregar al carrito</p>
-                    <p class="price">$300</p>
-                  </a>
-                  </div>
-                  
-                  
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-            <div class="card product-card">
-                <div class="card-img">
-                    <img src="https://picsum.photos/306/368/?random=3" alt="Primera banda destacada">
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Producto 1</h3>
-                <a href="" class="card-button d-flex">
-                  <p class="add-to-cart">Agregar al carrito</p>
-                  <p class="price">$300</p>
-                </a>
-                </div>
-                
-                
-            </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-          <div class="card product-card">
-              <div class="card-img">
-                  <img src="https://picsum.photos/306/368/?random=4" alt="Primera banda destacada">
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Producto 1</h3>
-              <a href="" class="card-button d-flex">
-                <p class="add-to-cart">Agregar al carrito</p>
-                <p class="price">$300</p>
-              </a>
-              </div>
-              
-              
-          </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-              <div class="card product-card">
-                  <div class="card-img">
-                      <img src="https://picsum.photos/306/368/?random=5" alt="Primera banda destacada">
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">Producto 1</h3>
-                  <a href="" class="card-button d-flex">
-                    <p class="add-to-cart">Agregar al carrito</p>
-                    <p class="price">$300</p>
-                  </a>
-                  </div>
-                  
-                  
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-              <div class="card product-card">
-                  <div class="card-img">
-                      <img src="https://picsum.photos/306/368/?random=6" alt="Primera banda destacada">
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">Producto 1</h3>
-                  <a href="" class="card-button d-flex">
-                    <p class="add-to-cart">Agregar al carrito</p>
-                    <p class="price">$300</p>
-                  </a>
-                  </div>
-                  
-                  
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-            <div class="card product-card">
-                <div class="card-img">
-                    <img src="https://picsum.photos/306/368/?random=7" alt="Primera banda destacada">
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Producto 1</h3>
-                <a href="" class="card-button d-flex">
-                  <p class="add-to-cart">Agregar al carrito</p>
-                  <p class="price">$300</p>
-                </a>
-                </div>
-                
-                
-            </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in">
-          <div class="card product-card">
-              <div class="card-img">
-                  <img src="https://picsum.photos/306/368/?random=8" alt="Primera banda destacada">
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Producto 1</h3>
-              <a href="" class="card-button d-flex">
-                <p class="add-to-cart">Agregar al carrito</p>
-                <p class="price">$300</p>
-              </a>
-              </div>
-              
-              
-          </div>
-            </div>
-            
-            
-            
-        </section>
+          <section id="contenedorProductos" class="row mb-5">
+            <!-- Aqui se muestran los Productos -->
+          </section>
           
         </div>
       </section>
       <!-- Fin de Novedades -->
-
-        <hr class="mw-100" />
-
-      <!-- Noticias -->
-      <h2 class="my-4 text-center">Noticias</h2>
-      <div class="container">
-
-        <section class="row mb-5">
-
-          <div class="col-lg-4 mb-4" data-aos="zoom-out-up">
-            <div class="card card-noti-inicio">
-              <img class="card-img" src="assets/img/noticias/noti1.jpg" alt="Imagen de la noticia">
-              <div class="card-img-overlay ">
-                <h3 class="h5 card-title">Pink Floyd lanza su documental "Eclipse"</h3>
-                <p class="card-text align-bottom">10-10-23</p>
-              </div>
-            </div>
-          </div>
-
-          
-
-        </section>
-
-        
-
-        
-        
-      </div>
-      <!-- Fin de Noticias -->
-
-      <hr class="my-0 mw-100" />
-       
-      <!-- Spotify -->
-      <div class="container fondo-parallax">
-        <div class="container zona-spotify">
-          <section class="row">
-          <div class="col-lg-4 mb-4" data-aos="fade-right">
-            <h2 class="text-center">¡Ya llegamos a Spotify!</h2>
-            <p class="card-text">Si querés disfrutar de la mejor música, no te pierdas la oportunidad de seguir nuestra nueva playlist de Spotify con los mejores temas del Rock Nacional. Semanalmente actualizamos la playlist para que puedas disfrutar el mejor Rock estés donde estés.</p>
-            <h3 class="h5">Hace click en el siguiente botón para seguir nuestra playlist</h3>
-            <a href="https://open.spotify.com/playlist/42RzknAZ7lkhLhl057N86v?go=1&sp_cid=cb5a118ed8691ced00cff6c5e8ad95fb&utm_source=embed_player_p&utm_medium=desktop&nd=1" class="btn btn-info btn-spotify">Seguir +</a>
-          </div>
-
-          <div class="col-lg-8">
-            <iframe data-aos="fade-left" class="spotify-playlist" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/42RzknAZ7lkhLhl057N86v?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        
-          </div>
-
-          
-        </section>
-        </div>
-      </div>
-      <!-- Fin de Spotify -->
 
     </main>
     <!-- Fin del Cuerpo del Sitio -->
@@ -450,24 +289,24 @@
               <div class="row pb-4">
                 <!-- Descripción del Sitio -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                  <h3 class="h5 mb-4">Rocanroles Argentinos</h3>
-                  <p>Rocanroles Argentinos es un sitio donde se ofrece de manera informativa las ultimas novedades del mundo de la musica en Argentina.</p>
+                  <h3 class="h5 mb-4">Ojitos Turcos</h3>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum quia, eligendi quae magni asperiores accusamus labore nulla, in adipisci ratione voluptates cum provident, dolore quibusdam quaerat veniam quam eum unde!</p>
                 </div>
                 <hr class="w-100 d-md-none" />
                 <!-- Navegación -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                   <h3 class="h6 mb-4">Navegación</h3>
                   <p><a href="index.html">Inicio</a></p>
-                  <p><a href="html/bandas/lvp.html">Bandas</a></p>
-                  <p><a href="html/noticias/noticias.html">Noticias</a></p>
-                  <p><a href="html/imagenes/imagenes.html">Imágenes</a></p>
+                  <p><a href="#">Bandas</a></p>
+                  <p><a href="#">Noticias</a></p>
+                  <p><a href="#">Imágenes</a></p>
                 </div>
                 <hr class="w-100 d-md-none" />
                 <!-- Contacto -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                   <h3 class="h6 mb-4">Contacto</h3>
                   <p><a href="#">Sobre Nosotros</a></p>
-                  <p><a href="html/contacto/contacto.html">Contacto</a></p>
+                  <p><a href="#">Contacto</a></p>
                 </div>
                 <hr class="w-100 d-md-none" />
                 <!-- Redes -->
@@ -528,9 +367,10 @@
     
 
 
+    <script src="./JS/app.js"></script>  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
