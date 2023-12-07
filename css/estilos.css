@@ -470,7 +470,13 @@ main .novedades {
     font-size: 32px !important;
   }
   body .card-img img {
-    height: 716px;
+    height: 368px;
+  }
+  body .add-to-cart {
+    font-size: 13px !important;
+  }
+  body .titulos-tabla td, body .item-carrito td {
+    font-size: 15px !important;
   }
   .navbar-brand {
     font-size: 130%;

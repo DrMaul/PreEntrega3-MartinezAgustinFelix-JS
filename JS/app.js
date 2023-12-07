@@ -205,7 +205,7 @@ function actualizarModalCarrito() {
         const item = document.createElement('tr');
         item.classList.add('item-carrito');
         item.innerHTML = `
-            <td class="text-center item-descrip">Aún no hay productos en carrito</td>
+            <td class="text-center item-descrip pt-5">Aún no hay productos en carrito</td>
         `
         listaCompra.appendChild(item);
     } else {
