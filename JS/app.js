@@ -1,6 +1,7 @@
 //Definimos el array carrito, vacío inicialmente
 const carrito = [];
 
+//Booleano para setear si estoy en carrito.html o no
 let enCarrito = false;
 
 // Obtener la ubicación del script actual (app.js)
@@ -8,7 +9,7 @@ const scriptPath = document.currentScript.src;
 const basePath = scriptPath.substring(0, scriptPath.lastIndexOf('/') + 1);
 
 
-
+//Array con los objetos productos
 const productos = [
     {id: 1, nombre: "Pulsera Ojo Turco Clásica", precio: 500, img: `${basePath}../assets/img/productos/pulsera_ojoturco.png`},
     {id: 2, nombre: "Pulsera Ojo Turco Riqueza", precio: 500, img:`${basePath}../assets/img/productos/pulsera_riqueza.png`},

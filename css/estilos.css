@@ -3,6 +3,7 @@ html, body {
   overflow-x: hidden;
 }
 
+/*Estilos del Body*/
 body {
   font-family: "Didact Gothic", sans-serif;
   color: rgb(24, 72, 174);
@@ -240,9 +241,13 @@ hero .hero-content-cart .hero-subtitle {
   margin-bottom: 32px;
 }
 
+/*Estilos del Main */
 main {
+  /* Estilos de Carrito */
   /*Estilos de About*/
   /*Estilos de Destacados */
+  /*Estilos de Categorias */
+  /*Estilos de Novedades */
 }
 main .mi-carrito {
   padding: 100px 0 50px 0;
@@ -271,9 +276,8 @@ main .mi-carrito .tabla-carrito .carta-tabla-carrito .item-carrito .img-item-car
 }
 main .mi-carrito .tabla-carrito .carta-tabla-carrito .item-carrito .img-item-carrito img {
   max-width: 100%;
-  height: auto;
+  height: 200px;
   vertical-align: middle;
-  padding-left: 16px;
   border-radius: 15px;
   box-shadow: 42px 42px 24px rgba(0, 0, 0, 0.01), 24px 24px 20px rgba(0, 0, 0, 0.03), 11px 11px 15px rgba(0, 0, 0, 0.04), 3px 3px 8px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0.05);
 }
@@ -285,8 +289,8 @@ main .mi-carrito .tabla-carrito .carta-tabla-carrito .item-carrito .item-descrip
   font-size: 21px;
   line-height: 140%;
   color: rgb(12, 12, 12);
-  max-width: 30px; /* Ajusta el valor según sea necesario */
-  word-wrap: break-word; /* Permite el salto de línea */
+  max-width: 30px;
+  word-wrap: break-word;
 }
 main .mi-carrito .tabla-carrito .carta-tabla-carrito .item-carrito .my-button {
   padding: 12px;
@@ -469,14 +473,26 @@ main .novedades {
   body h2 {
     font-size: 32px !important;
   }
-  body .card-img img {
-    height: 368px;
+  body .product-card .card-img img {
+    height: 250px !important;
   }
-  body .add-to-cart {
+  body .product-card .card-title {
+    font-size: 18px !important;
+    padding-bottom: 8px;
+  }
+  body .product-card .add-to-cart {
     font-size: 13px !important;
+    padding: 15px 0px !important;
+  }
+  body .product-card .price {
+    font-size: 13px !important;
+    padding: 15px 0 !important;
   }
   body .titulos-tabla td, body .item-carrito td {
     font-size: 15px !important;
+  }
+  body .img-item-carrito img {
+    height: 100px !important;
   }
   .navbar-brand {
     font-size: 130%;

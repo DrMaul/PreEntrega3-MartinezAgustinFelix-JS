@@ -1,7 +1,6 @@
 $negrita: 800;
 $light: 100;
 
-$color-dark: black;
 $color-white: #FAFAFA;
 
 $color-blue: rgba(24,72,174,255) ;
@@ -9,9 +8,6 @@ $color-crema: rgba(247,234,218,255);
 $color-gold: rgba(189,157,48,255);
 
 $color-gris-dark: rgb(12, 12, 12);
-
-$color-gris: rgb(19,19,19);
-$color-cian: rgb(3, 201, 201);
 
 $header-buttons-size: 48px;
 $header-icons-size: 38px;
@@ -21,13 +17,11 @@ $sombra-color:rgba(0, 0, 0, 0.01), 24px 24px 20px rgba(0, 0, 0, 0.03), 11px 11px
 
 html, body {
     overflow-x: hidden;
-
     
 }
 
 
-
-
+/*Estilos del Body*/
 body {
     font-family: 'Didact Gothic', sans-serif;
     color: $color-blue;
@@ -355,9 +349,10 @@ hero {
 
 }
 
-
+/*Estilos del Main */
 main {
 
+    /* Estilos de Carrito */
     .mi-carrito {
         padding: 100px 0 50px 0;
 
@@ -393,9 +388,8 @@ main {
 
                         img {
                             max-width: 100%;
-                            height: auto;
+                            height: 200px;
                             vertical-align: middle;
-                            padding-left: 16px;
                             border-radius: 15px;
                             box-shadow: $sombra $sombra-color;
                         }
@@ -405,7 +399,6 @@ main {
                     td {
                         padding-bottom: 32px;
 
-
                     }
 
                     .item-descrip {
@@ -413,8 +406,8 @@ main {
                         font-size: 21px;
                         line-height: 140%;
                         color: $color-gris-dark;
-                        max-width: 30px; /* Ajusta el valor según sea necesario */
-                        word-wrap: break-word; /* Permite el salto de línea */
+                        max-width: 30px; 
+                        word-wrap: break-word; 
                         
                     }
 
@@ -433,72 +426,72 @@ main {
             
         }
 
-       .carrito-ticket {
-        border-radius: 45px;
-        background: $color-white;
-        box-shadow:$sombra $sombra-color ;
+        .carrito-ticket {
+            border-radius: 45px;
+            background: $color-white;
+            box-shadow:$sombra $sombra-color ;
 
-        .ticket-content{
-            &:first-child{
-                border:0;
-            }
-            padding: 30px;
-            border-top: 3px solid $color-gold;
+            .ticket-content{
+                &:first-child{
+                    border:0;
+                }
+                padding: 30px;
+                border-top: 3px solid $color-gold;
 
 
-            h5 {
-                font-weight: 700;
-                font-size: 28px;
-                line-height: 120%;
-                color: $color-gris-dark;
-                margin-bottom: 30px;
-                text-transform: uppercase;
-            }
-
-            .detalle-compra {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 4px;
-
-                p{
-                    font-weight: 400;
-                    font-size: 23px;
+                h5 {
+                    font-weight: 700;
+                    font-size: 28px;
                     line-height: 120%;
                     color: $color-gris-dark;
-                    margin-bottom: 0;
+                    margin-bottom: 30px;
+                    text-transform: uppercase;
                 }
 
-                span {
-                    font-weight: 700;
-                    font-size: 23px;
-                    line-height: 140%;
-                    color: $color-gris-dark;
-                    margin-bottom: 0;
+                .detalle-compra {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+
+                    p{
+                        font-weight: 400;
+                        font-size: 23px;
+                        line-height: 120%;
+                        color: $color-gris-dark;
+                        margin-bottom: 0;
+                    }
+
+                    span {
+                        font-weight: 700;
+                        font-size: 23px;
+                        line-height: 140%;
+                        color: $color-gris-dark;
+                        margin-bottom: 0;
+                    }
+
                 }
 
-            }
+                .total-compra {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 30px;
 
-            .total-compra {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 30px;
+                    
+                }
 
+                .my-button {
+                    background-color: $color-gold;
+
+                    &:hover {
+                        background-color: $color-crema;
+                    }
+                    a{
+                        font-size: 34px;
+                    }
+                }
                 
             }
-
-            .my-button {
-                background-color: $color-gold;
-
-                &:hover {
-                    background-color: $color-crema;
-                }
-                a{
-                    font-size: 34px;
-                }
-            }
-            
         }
-       }
         
 
     }
@@ -560,6 +553,7 @@ main {
         
     }
 
+    /*Estilos de Categorias */
     .categorias {
 
         .categoria-img {
@@ -602,6 +596,7 @@ main {
 
     }
 
+    /*Estilos de Novedades */
     .novedades {
         padding: 100px 0;
     }
@@ -712,20 +707,46 @@ main {
             font-size: 32px !important;
         }
 
-        .card-img {
-            img { 
-                height: 368px; 
-            }
-        }
+        .product-card {
 
-        .add-to-cart{
-            font-size: 13px !important;
+            .card-img {
+                img { 
+                    height: 250px !important; 
+                }
+            }
+    
+            .card-title {
+                font-size: 18px !important;
+                padding-bottom: 8px;
+            }
+    
+            .add-to-cart{
+                font-size: 13px !important;
+                padding: 15px 0px !important;
+            }
+    
+            .price {
+                font-size: 13px !important;
+                padding: 15px 0 !important;
+            }
+
+
         }
+        
 
         .titulos-tabla, .item-carrito {
             td {
                 font-size: 15px !important;
             }
+        }
+
+        .img-item-carrito {
+            
+            img {
+                height: 100px !important;
+
+            }
+
         }
     }
 
