@@ -32,12 +32,12 @@ function mostrarProductos(productosFiltrados) {
         divProducto.setAttribute("data-aos", "zoom-in");
         divProducto.innerHTML = `
             <div class="card product-card">
-                <div class="card-img" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio}, '${producto.img}')">
+                <div class="card-img" onclick="agregarAlCarrito('${producto.id}', '${producto.nombre}', ${producto.precio}, '${producto.img}')">
                     <img src="${producto.img}" alt="Imagen de ${producto.nombre}">
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">${producto.nombre}</h3>
-                    <a class="card-button d-flex" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio}, '${producto.img}')">
+                    <a class="card-button d-flex" onclick="agregarAlCarrito('${producto.id}','${producto.nombre}', ${producto.precio}, '${producto.img}')">
                     <p class="add-to-cart">Agregar al carrito</p>
                     <p class="price">${producto.precio}</p>
                     </a>
@@ -52,9 +52,18 @@ function mostrarProductos(productosFiltrados) {
   }
 
 //Agregamos producto al carrito
-function agregarAlCarrito(nombre, precio, img) {
-    // Agregar producto al carrito
-    carrito.push({ nombre, precio, img }); 
+function agregarAlCarrito(id, nombre, precio, img) {
+
+    // Verificar si el producto ya está en el carrito
+    const productoExistente = carrito.find(item => item.id === id);
+
+    if (productoExistente) {
+        // Si el producto ya está en el carrito, incrementar la cantidad
+        productoExistente.cantidad += 1;
+      } else {
+        // Si el producto no está en el carrito, agregarlo con cantidad 1
+        carrito.push({ id, nombre, precio, img, cantidad: 1 });
+      }
 
     // Actualizar la lista en el modal
     actualizarModalCarrito();
@@ -92,15 +101,34 @@ function actualizarModalCarrito() {
     carrito.map((producto, index) => {
       const item = document.createElement('li');
       item.classList.add('list-group-item');
+
+    //Variable que almacena el total del precio segun la cantidad elegida de un producto  
+    const precioTotal = producto.precio * producto.cantidad;
+
       item.innerHTML = `
-        <h5 class="d-flex justify-content-start">${producto.nombre}</h5>
-        <p class="float-start mt-2">Precio: $${producto.precio}</p>
-        <span class="float-end align-self-center my-button bg-danger text-white" style="cursor: pointer;" onclick="eliminarDelCarrito(${index})">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-            </svg>
-        </span>
+      <div class="row">
+        <div class="col-9">
+            <div class="d-flex flex-column align-items-start">
+                <h5>${producto.nombre}</h5>
+                <p>Cantidad: ${producto.cantidad}</p>
+                <p>Precio Total: $${precioTotal}</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="d-flex align-item-center">
+                <span class=" my-button bg-danger text-white" style="cursor: pointer;" onclick="eliminarDelCarrito(${index})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                    </svg>
+                </span>
+            </div>
+            
+        </div>
+      </div>
+      
+        
+        
       `;
       listaCarrito.appendChild(item);
     });
@@ -111,12 +139,22 @@ function actualizarModalCarrito() {
         <h5 class="d-flex justify-content-start">Total en carrito: $${totalGastado}</h5>
     `
 
-
   }
 
   // Funcion para quitar producto del carrito
   function eliminarDelCarrito(index) {
-    carrito.splice(index, 1); // Eliminar el elemento del array
+    
+    const producto = carrito[index];
+
+  if (producto.cantidad > 1) {
+    // Si la cantidad es mayor que 1, decrementa la cantidad en 1
+    producto.cantidad--;
+  } else {
+    // Si la cantidad es 1, elimina el producto del carrito
+    carrito.splice(index, 1);
+  }
+
+  //Si estoy en carrito.html actualizo la tabla
     if (enCarrito === true) {
         actualizarCompraCarrito();
     }
@@ -227,22 +265,27 @@ function actualizarModalCarrito() {
         listaCompra.appendChild(titulosTabla);
     }
 
-    
+    let precioTotal = 0;
+    const arrayPrecioTotal = []
   
     // Agregar cada producto del carrito a la tabla
     carrito.map((producto, index) => {
         const item = document.createElement('tr');
         item.classList.add('item-carrito');
+
+        precioTotal = producto.precio * producto.cantidad;
+        arrayPrecioTotal.push(precioTotal);
+
         item.innerHTML = `
         <td class="img-item-carrito">
         <img src="${producto.img}" alt="Imagen de ${producto.nombre}">
         </td>
         <td class="text-center item-descrip">${producto.nombre}</td>
         <td class="text-center item-descrip">$${producto.precio}</td>
-        <td class="text-center item-descrip">1</td>
-        <td class="text-center item-descrip">$${producto.precio}</td>
+        <td class="text-center item-descrip">${producto.cantidad}</td>
+        <td class="text-center item-descrip">$${precioTotal}</td>
         <td class="text-center">
-            <span class="float-end align-self-center my-button bg-danger text-white" style="cursor: pointer;" onclick="eliminarDeCompra(${index})">
+            <span class="float-end align-self-center my-button bg-danger text-white" style="cursor: pointer;" onclick="eliminarDelCarrito(${index})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
@@ -254,7 +297,7 @@ function actualizarModalCarrito() {
     });
 
     //Mostramos el total gastado segun los objetos del carrito
-    const totalProd = carrito.reduce((total, producto) => total + producto.precio, 0);
+    const totalProd = arrayPrecioTotal.reduce((total, precio) => total + precio, 0);
     totalProductos.innerText = `$${totalProd.toFixed(2)}`;
 
     //Mostramos el costo de envio
@@ -268,15 +311,7 @@ function actualizarModalCarrito() {
     totalCompraSaldo.innerText = `$${totalComprado.toFixed(2)}`;
   }
 
-  //Eliminamos producto seleccionado de la compra
-  function eliminarDeCompra (index) {
-    carrito.splice(index, 1); // Eliminar el elemento del array
-    actualizarCompraCarrito();
-    actualizarContadorCarrito(); // Actualizar el contador carrito
-    guardarCarritoLocalStorage();
-
-
-  }
+ 
 
 //Función para obtener los elementos del storage
   function obtenerCarritoStorage() {
