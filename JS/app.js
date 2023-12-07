@@ -27,7 +27,7 @@ function mostrarProductos(productosFiltrados) {
     
     productosFiltrados.forEach(producto => {
         const divProducto = document.createElement("div");
-        divProducto.classList.add("col-lg-3", "col-md-6", "mb-4");
+        divProducto.classList.add("col-lg-3", "col-6", "mb-4");
         divProducto.setAttribute("data-aos", "zoom-in");
         divProducto.innerHTML = `
             <div class="card product-card">
@@ -286,22 +286,21 @@ function actualizarModalCarrito() {
 
     const rutaActual = document.location.pathname;
   
-    if (rutaActual.includes('index.html') || rutaActual === '/' || rutaActual === '/index.html') {
-      // Lógica para index.html
-      console.log('Estás en index.html');
-      // Llama a la función correspondiente para index.html
-      enCarrito = false;
-      mostrarProductos(productos);
-    } else if (rutaActual.includes('carrito.html')) {
-      // Lógica para carrito.html
-      console.log('Estás en carrito.html');
-      // Llama a la función correspondiente para carrito.html
-      enCarrito = true;
-      actualizarCompraCarrito();
-    } else {
-      // Lógica predeterminada o manejo de errores
-      console.log('No se reconoce la página');
-    }
+    if (rutaActual.includes('carrito.html')) {
+        // Lógica para carrito.html
+        console.log('Estás en carrito.html');
+        // Llama a la función correspondiente para carrito.html
+        enCarrito = true;
+        actualizarCompraCarrito();
+      } 
+     else {
+        // Lógica para index.html
+        console.log('Estás en index.html');
+        // Llama a la función correspondiente para index.html
+        enCarrito = false;
+        mostrarProductos(productos);
+      }
+      
 
     // Actualizar el contador del carrito
     actualizarContadorCarrito();

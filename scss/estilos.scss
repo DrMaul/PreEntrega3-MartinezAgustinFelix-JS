@@ -377,9 +377,11 @@ main {
                     td {
                         padding: 32px 0 48px;
                         font-weight: 700;
-                        font-size: 18px;
+                        font-size: 23px;
                         line-height: 140%;
                         color: $color-gris-dark;
+                        
+                        
                     }
                 }
 
@@ -403,13 +405,17 @@ main {
                     td {
                         padding-bottom: 32px;
 
+
                     }
 
                     .item-descrip {
                         font-weight: 700;
-                        font-size: 23px;
+                        font-size: 21px;
                         line-height: 140%;
                         color: $color-gris-dark;
+                        max-width: 30px; /* Ajusta el valor según sea necesario */
+                        word-wrap: break-word; /* Permite el salto de línea */
+                        
                     }
 
                     .my-button
