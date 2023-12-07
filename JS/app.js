@@ -286,7 +286,7 @@ function actualizarModalCarrito() {
 
     const rutaActual = document.location.pathname;
   
-    if (rutaActual.includes('index.html')) {
+    if (rutaActual.includes('index.html') || rutaActual === '/' || rutaActual === '/index.html') {
       // Lógica para index.html
       console.log('Estás en index.html');
       // Llama a la función correspondiente para index.html
