@@ -185,16 +185,18 @@ function actualizarModalCarrito() {
   }
 
 
-
+// Actualizar el listado del carrito.html
   function actualizarCompraCarrito() {
 
     const listaCompra = document.getElementById('listaCompra');
 
+    //Elementos del "ticket"
     const totalProductos = document.getElementById('totalProductos');
     const totalEnvio = document.getElementById('totalEnvio');
     const totalServicio = document.getElementById('totalServicio');
     const totalCompraSaldo = document.getElementById('totalCompraSaldo');
 
+    //Defino variables de valor de envío y costo de servicio
     let envio = 500;
     let servicio = 95;
     
@@ -210,6 +212,8 @@ function actualizarModalCarrito() {
         `
         listaCompra.appendChild(item);
     } else {
+
+        //Cuando haya al menos 1 elemento, primero muestro los encabezados de la tabla
         const titulosTabla = document.createElement('tr');
         titulosTabla.classList.add('titulos-tabla');
         titulosTabla.innerHTML = `
@@ -225,7 +229,7 @@ function actualizarModalCarrito() {
 
     
   
-    // Agregar cada producto del carrito a la lista del modal
+    // Agregar cada producto del carrito a la tabla
     carrito.map((producto, index) => {
         const item = document.createElement('tr');
         item.classList.add('item-carrito');
@@ -253,15 +257,18 @@ function actualizarModalCarrito() {
     const totalProd = carrito.reduce((total, producto) => total + producto.precio, 0);
     totalProductos.innerText = `$${totalProd.toFixed(2)}`;
 
+    //Mostramos el costo de envio
     totalEnvio.innerText = `$${envio.toFixed(2)}`;
 
+    //Mostramos el costo de servicio
     totalServicio.innerText = `$${servicio.toFixed(2)}`;
 
+    // Sumamos todas las variables para informar el total de la compra
     let totalComprado = totalProd + envio + servicio;
-
     totalCompraSaldo.innerText = `$${totalComprado.toFixed(2)}`;
   }
 
+  //Eliminamos producto seleccionado de la compra
   function eliminarDeCompra (index) {
     carrito.splice(index, 1); // Eliminar el elemento del array
     actualizarCompraCarrito();
@@ -271,7 +278,7 @@ function actualizarModalCarrito() {
 
   }
 
-
+//Función para obtener los elementos del storage
   function obtenerCarritoStorage() {
     // Verificar si hay elementos en localStorage al inicio
     document.addEventListener('DOMContentLoaded', function () {
@@ -285,22 +292,30 @@ function actualizarModalCarrito() {
     }
 
 
+    //Chequeo la ruta desde la cual estoy accediendo
     const rutaActual = document.location.pathname;
   
+    //Si estoy en carrito.html activo el booleano y llamo a la función actualizarCompraCarrito
     if (rutaActual.includes('carrito.html')) {
-        // Lógica para carrito.html
         console.log('Estás en carrito.html');
-        // Llama a la función correspondiente para carrito.html
         enCarrito = true;
         actualizarCompraCarrito();
       } 
-     else {
-        // Lógica para index.html
+     else { //Si no estoy en carrito.html (de momento la otra opcion es index.html), desactivo el booleano y llamo a mostrarProductos
         console.log('Estás en index.html');
-        // Llama a la función correspondiente para index.html
         enCarrito = false;
         mostrarProductos(productos);
       }
+
+      /**
+       Tuve que implementar esta funcionalidad, ya que al estar conectando app.js desde dos archivos (index.html y carrito.html)
+       me generaba problemas al llamar a elementos del DOM unicos desde cada documento.
+       Por eso tuve que condicionar desde que ruta estoy accediendo al codigo, y asi llamar a sus funciones.
+       El booleano lo implemente xq al eliminar un producto del modal, no se me eliminaba de la sección "tu carrito" ya que
+       ya que la funcion eliminarDelCarrito no hacia el llamado a actualizarCompraCarrito, y no podia llamar a esa funcion desde index por el problema anterior
+       por lo tanto con el booleano, cuando sea true puedo hacer el llamado a actualizarCompraCarrito desde eliminarDelCarrito
+       * 
+       */
       
 
     // Actualizar el contador del carrito
