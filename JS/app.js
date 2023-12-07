@@ -39,7 +39,7 @@ function mostrarProductos(productosFiltrados) {
                     <h3 class="card-title">${producto.nombre}</h3>
                     <a class="card-button d-flex" onclick="agregarAlCarrito('${producto.id}','${producto.nombre}', ${producto.precio}, '${producto.img}')">
                     <p class="add-to-cart">Agregar al carrito</p>
-                    <p class="price">${producto.precio}</p>
+                    <p class="price">$${producto.precio}</p>
                     </a>
                 </div>
             </div>
@@ -97,13 +97,17 @@ function actualizarModalCarrito() {
         listaCarrito.appendChild(item);
     }
   
+
+    let precioTotal = 0;
+    const arrayPrecioTotal = []
     // Agregar cada producto del carrito a la lista del modal
     carrito.map((producto, index) => {
       const item = document.createElement('li');
       item.classList.add('list-group-item');
 
     //Variable que almacena el total del precio segun la cantidad elegida de un producto  
-    const precioTotal = producto.precio * producto.cantidad;
+    precioTotal = producto.precio * producto.cantidad;
+    arrayPrecioTotal.push(precioTotal);
 
       item.innerHTML = `
       <div class="row">
@@ -134,9 +138,9 @@ function actualizarModalCarrito() {
     });
 
     //Mostramos el total gastado segun los objetos del carrito
-    const totalGastado = carrito.reduce((total, producto) => total + producto.precio, 0);
+    const totalProd = arrayPrecioTotal.reduce((total, precio) => total + precio, 0);
     totalCarrito.innerHTML = `
-        <h5 class="d-flex justify-content-start">Total en carrito: $${totalGastado}</h5>
+        <h5 class="d-flex justify-content-start">Total en carrito: $${totalProd.toFixed(2)}</h5>
     `
 
   }
