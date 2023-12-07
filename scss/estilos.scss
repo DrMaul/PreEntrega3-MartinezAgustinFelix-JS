@@ -2,7 +2,7 @@ $negrita: 800;
 $light: 100;
 
 $color-dark: black;
-$color-white: white;
+$color-white: #FAFAFA;
 
 $color-blue: rgba(24,72,174,255) ;
 $color-crema: rgba(247,234,218,255);
@@ -16,8 +16,8 @@ $color-cian: rgb(3, 201, 201);
 $header-buttons-size: 48px;
 $header-icons-size: 38px;
 
-$sombra: 3px 3px 8px 0px ;
-$sombra-color:rgba(0, 0, 0, 0.2) ;
+$sombra: 42px 42px 24px;
+$sombra-color:rgba(0, 0, 0, 0.01), 24px 24px 20px rgba(0, 0, 0, 0.03), 11px 11px 15px rgba(0, 0, 0, 0.04), 3px 3px 8px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0.05);;
 
 html, body {
     overflow-x: hidden;
@@ -67,6 +67,7 @@ body {
         }
     }
 
+    /*Estilos de los botones */
     .my-button {
         background: transparent;
         border: 1px solid $color-gold;
@@ -88,6 +89,7 @@ body {
         
     }
 
+    /*Estilos del Card productos */
     .product-card {
         text-align: center;
         margin-bottom: 24px;
@@ -162,7 +164,31 @@ body {
 
     }
 
+    /*Estilos del Modal carrito */
     .custom-modal {
+
+        .modal-content {
+            background-color: $color-crema;
+            border-radius: 30px;
+
+            .list-group-item {
+                background-color: $color-crema;
+
+                .my-button
+                {
+                    padding:12px;
+
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*Estilos del Modal notificación al agregar producto a carrito */
+    .custom-modal-alert {
         position: fixed;
         top: 30%;
         left: 50%;
@@ -177,16 +203,17 @@ body {
         opacity: 0; /* Inicialmente, la alerta es invisible */
         transition: opacity 0.5s ease; /* Transición de opacidad para la animación de entrada */
       
-    
-    }
+        &.show {
+            opacity: 1; /* Cuando tiene la clase 'show', la alerta es visible */
+          }
 
-    .custom-modal.show {
-        opacity: 1; /* Cuando tiene la clase 'show', la alerta es visible */
-      }
-
-      .custom-modal.fade {
+        &.fade {
         opacity: 0; /* Cuando tiene la clase 'fade', la alerta se hace invisible */
-      }  
+        }  
+
+    }
+    
+      
 
 }
 
@@ -306,8 +333,20 @@ hero {
             margin-bottom: 32px;
         }
 
-        
+    }
 
+    .hero-content-cart {
+        padding-top: 80px ;
+        text-align: center;
+
+        .hero-title {
+            font-size: 80px;
+        }
+
+        .hero-subtitle {
+            font-size:40px;
+            margin-bottom: 32px;
+        }
 
     }
     
@@ -318,6 +357,147 @@ hero {
 
 
 main {
+
+    .mi-carrito {
+        padding: 100px 0 50px 0;
+
+        .tabla-carrito{
+            border-radius: 45px;
+            box-shadow: $sombra $sombra-color;
+            background: $color-white;
+            padding: 15px;
+            margin-bottom: 30px;
+
+            .carta-tabla-carrito {
+                width: 100%;
+                margin-bottom: 32px;
+
+                .titulos-tabla {
+
+                    td {
+                        padding: 32px 0 48px;
+                        font-weight: 700;
+                        font-size: 18px;
+                        line-height: 140%;
+                        color: $color-gris-dark;
+                    }
+                }
+
+                .item-carrito {
+
+                    .img-item-carrito {
+                        width: 23%;
+                        padding-right: 20px;
+
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                            vertical-align: middle;
+                            padding-left: 16px;
+                            border-radius: 15px;
+                            box-shadow: $sombra $sombra-color;
+                        }
+
+                    }
+
+                    td {
+                        padding-bottom: 32px;
+
+                    }
+
+                    .item-descrip {
+                        font-weight: 700;
+                        font-size: 23px;
+                        line-height: 140%;
+                        color: $color-gris-dark;
+                    }
+
+                    .my-button
+                    {
+                        padding:12px;
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }   
+
+                }
+
+            }
+            
+        }
+
+       .carrito-ticket {
+        border-radius: 45px;
+        background: $color-white;
+        box-shadow:$sombra $sombra-color ;
+
+        .ticket-content{
+            &:first-child{
+                border:0;
+            }
+            padding: 30px;
+            border-top: 3px solid $color-gold;
+
+
+            h5 {
+                font-weight: 700;
+                font-size: 28px;
+                line-height: 120%;
+                color: $color-gris-dark;
+                margin-bottom: 30px;
+                text-transform: uppercase;
+            }
+
+            .detalle-compra {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 4px;
+
+                p{
+                    font-weight: 400;
+                    font-size: 23px;
+                    line-height: 120%;
+                    color: $color-gris-dark;
+                    margin-bottom: 0;
+                }
+
+                span {
+                    font-weight: 700;
+                    font-size: 23px;
+                    line-height: 140%;
+                    color: $color-gris-dark;
+                    margin-bottom: 0;
+                }
+
+            }
+
+            .total-compra {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+
+                
+            }
+
+            .my-button {
+                background-color: $color-gold;
+
+                &:hover {
+                    background-color: $color-crema;
+                }
+                a{
+                    font-size: 34px;
+                }
+            }
+            
+        }
+       }
+        
+
+    }
+
+
     /*Estilos de About*/
     .about {
 
